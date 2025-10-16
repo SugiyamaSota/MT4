@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="KamataEngine">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="KamataEngine\Source">
+      <UniqueIdentifier>{d966e9f8-e880-44ae-8586-a08515e4cffc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="KamataEngine\Include">
+      <UniqueIdentifier>{4aae4e40-94f7-4d32-9a91-c0c37a2edf0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="KamataEngine\Adapter">
+      <UniqueIdentifier>{c6468eb4-788b-4a83-b207-a5f4804e56c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="application">
+      <UniqueIdentifier>{81da1d2d-1c3f-4468-9e5d-a9ebf28ea9bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="application\camera">
+      <UniqueIdentifier>{52091143-f473-4a32-9b2e-588ee5eb2b05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="application\collisiton">
+      <UniqueIdentifier>{fab35dc4-7ff1-4ec8-8e95-7f8067151a4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="application\draw">
+      <UniqueIdentifier>{e0bc5126-c0f4-415c-bb2f-753a4f2cc9ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="application\header">
+      <UniqueIdentifier>{b9ebd3b4-de5b-4cf2-8e99-180c927cd9bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="application\matrix">
+      <UniqueIdentifier>{3ea51200-5558-4c22-9b82-b4e960f284c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="application\vector">
+      <UniqueIdentifier>{98fd465d-b15c-4756-a967-e96b3d9df13f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="application\struct">
+      <UniqueIdentifier>{22de2b05-69ed-43c2-941a-393b83fffdaf}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="C:\KamataEngine\Adapter\Novice.cpp">
+      <Filter>KamataEngine\Adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="application\camera\Camera.cpp">
+      <Filter>application\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="application\collision\Collision.cpp">
+      <Filter>application\collisiton</Filter>
+    </ClCompile>
+    <ClCompile Include="application\draw\Draw.cpp">
+      <Filter>application\draw</Filter>
+    </ClCompile>
+    <ClCompile Include="application\matrix\Matrix.cpp">
+      <Filter>application\matrix</Filter>
+    </ClCompile>
+    <ClCompile Include="application\vector\Vector.cpp">
+      <Filter>application\vector</Filter>
+    </ClCompile>
+    <ClCompile Include="application\coversion\Conversion.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\KamataEngine\DirectXGame\base\WinApp.h">
+      <Filter>KamataEngine\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\KamataEngine\DirectXGame\3d\WorldTransform.h">
+      <Filter>KamataEngine\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\KamataEngine\Adapter\Novice.h">
+      <Filter>KamataEngine\Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="application\camera\Camera.h">
+      <Filter>application\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="application\collision\Collision.h">
+      <Filter>application\collisiton</Filter>
+    </ClInclude>
+    <ClInclude Include="application\draw\Draw.h">
+      <Filter>application\draw</Filter>
+    </ClInclude>
+    <ClInclude Include="application\HeaderReader.h">
+      <Filter>application\header</Filter>
+    </ClInclude>
+    <ClInclude Include="application\matrix\Matrix.h">
+      <Filter>application\matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="application\vector\Vector.h">
+      <Filter>application\vector</Filter>
+    </ClInclude>
+    <ClInclude Include="application\struct\Struct.h">
+      <Filter>application\struct</Filter>
+    </ClInclude>
+    <ClInclude Include="application\coversion\Conversion.h" />
+  </ItemGroup>
+</Project>
