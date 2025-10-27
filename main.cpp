@@ -9,6 +9,8 @@ const char kWindowTitle[] = "LC2C_17_スギヤマソウタ_MT4";
 const int kWindowWidth = 1280;
 const int kWindowHeight = 720;
 
+const int kRowHeight = 20;
+
 // Windowsアプリでのエントリーポイント(main関数)
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
@@ -20,10 +22,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	camera->Initialize(kWindowWidth, kWindowHeight);
 
 	//
-	Vector3 axis = Normalize({ 1.0f,1.0f,1.0f });
-	float angle = 0.44f;
-	Matrix4x4 rotateMatrix = MakeRotateAxisAngle(axis, angle);
-	
+	Vector3 from0 = Normalize(Vector3{ 1.f,0.7f,0.5f });
+	Vector3 to0 = -from0;
+	Vector3 from1 = Normalize(Vector3{ -0.6f,0.9f,0.2f });
+	Vector3 to1 = Normalize(Vector3{ 0.4f,0.7f,-0.5f });
 
 	//float deltaTime = 1.0f / 60.0f;
 
@@ -47,11 +49,17 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		// ImGui
 		ImGui::Begin("Window");
 		if (ImGui::Button("Start")) {
-			
+
 		}
 		ImGui::End();
 
-		MatrixScreenPrintf(0, 0, rotateMatrix, "rotateMatrix");
+		Matrix4x4 rotateMatrix0 = DirectionToDirection(Normalize(Vector3{ 1.f,0.f,0.f }), Normalize(Vector3{ -1.f,0.f,0.f }));
+		Matrix4x4 rotateMatrix1 = DirectionToDirection(from0, to0);
+		Matrix4x4 rotateMatrix2 = DirectionToDirection(from1, to1);
+
+		MatrixScreenPrintf(0, 0, rotateMatrix0, "rotateMatrix0");
+		MatrixScreenPrintf(0, kRowHeight * 5, rotateMatrix1, "rotateMatrix1");
+		MatrixScreenPrintf(0, kRowHeight * 10, rotateMatrix2, "rotateMatrix2");
 
 		// カメラ
 		camera->Update();
