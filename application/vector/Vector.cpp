@@ -66,7 +66,7 @@ Vector3 Cross(const Vector3& vector1, const Vector3& vector2) {
 	return result;
 }
 
-Vector3 Project(const Vector3& v1, Vector3& v2) {
+Vector3 Project(const Vector3& v1, const Vector3& v2) {
 	Vector3 result = {};
 	result = Multiply(Dot(v1, Normalize(v2)), Normalize(v2));
 	return result;

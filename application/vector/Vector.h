@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 //--- 前方宣言 ---
 struct Vector3;
 struct Segment;
@@ -26,7 +26,7 @@ Vector3 Normalize(const Vector3& vector);
 Vector3 Cross(const Vector3& vector1, const Vector3& vector2);
 
 //正射影ベクトル
-Vector3 Project(const Vector3& v1, Vector3& v2);
+Vector3 Project(const Vector3& v1, const Vector3& v2);
 
 //最近接点
 Vector3 ClosestPoint(const Vector3& point,Segment& segment);
