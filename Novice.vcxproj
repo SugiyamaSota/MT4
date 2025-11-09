@@ -167,6 +167,7 @@ xcopy C:\KamataEngine\DirectXGame\Resources "$(OutDirFullPath)NoviceResources" /
     <ClCompile Include="main.cpp" />
     <ClCompile Include="application\matrix\Matrix.cpp" />
     <ClCompile Include="application\vector\Vector.cpp" />
+    <ClCompile Include="application\quaternion\Quaternion.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\KamataEngine\DirectXGame\3d\WorldTransform.h" />
@@ -180,6 +181,7 @@ xcopy C:\KamataEngine\DirectXGame\Resources "$(OutDirFullPath)NoviceResources" /
     <ClInclude Include="application\struct\Struct.h" />
     <ClInclude Include="application\vector\Vector.h" />
     <ClInclude Include="application\coversion\Conversion.h" />
+    <ClInclude Include="application\quaternion\Quaternion.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

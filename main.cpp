@@ -21,11 +21,15 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	Camera* camera = new Camera();
 	camera->Initialize(kWindowWidth, kWindowHeight);
 
-	//
-	Vector3 from0 = Normalize(Vector3{ 1.f,0.7f,0.5f });
-	Vector3 to0 = -from0;
-	Vector3 from1 = Normalize(Vector3{ -0.6f,0.9f,0.2f });
-	Vector3 to1 = Normalize(Vector3{ 0.4f,0.7f,-0.5f });
+	Quaternion q1 = { 2.f,3.f,4.f,1.f };
+	Quaternion q2 = { 1.f,3.f,5.f,2.f };
+	Quaternion identity = IdentityQuaternion();
+	Quaternion conj = Conjugate(q1);
+	Quaternion inv = Inverse(q1);
+	Quaternion normal = Normalize(q1);
+	Quaternion mul1 = Multiply(q1, q2);
+	Quaternion mul2 = Multiply(q2, q1);
+	float norm = Norm(q1);
 
 	//float deltaTime = 1.0f / 60.0f;
 
@@ -53,13 +57,41 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		}
 		ImGui::End();
 
-		Matrix4x4 rotateMatrix0 = DirectionToDirection(Normalize(Vector3{ 1.f,0.f,0.f }), Normalize(Vector3{ -1.f,0.f,0.f }));
-		Matrix4x4 rotateMatrix1 = DirectionToDirection(from0, to0);
-		Matrix4x4 rotateMatrix2 = DirectionToDirection(from1, to1);
 
-		MatrixScreenPrintf(0, 0, rotateMatrix0, "rotateMatrix0");
-		MatrixScreenPrintf(0, kRowHeight * 5, rotateMatrix1, "rotateMatrix1");
-		MatrixScreenPrintf(0, kRowHeight * 10, rotateMatrix2, "rotateMatrix2");
+		int y = 50;
+		int lineHeight = 40; // 1行の表示に十分な高さ
+
+		
+
+		// --- 結果の出力 ---
+
+		// Identity
+		QuaternionScreenPrintf(0, y, identity, "Identity:");
+		y += lineHeight;
+
+		// Conjugate
+		QuaternionScreenPrintf(0, y, conj, "Conjugate(Q1):");
+		y += lineHeight;
+
+		// Inverse
+		QuaternionScreenPrintf(0, y, inv, "Inverse(Q1):");
+		y += lineHeight;
+
+		// Normalize
+		QuaternionScreenPrintf(0, y, normal, "Normalize(Q1):");
+		y += lineHeight;
+
+		// Norm (ノルムの二乗はfloatなので通常のScreenPrintfを使用)
+		Novice::ScreenPrintf(0, y, "Norm(Q1): %.02f", norm);
+		y += lineHeight;
+
+		// Multiply (q1 * q2)
+		QuaternionScreenPrintf(0, y, mul1, "Multiply(Q1, Q2):");
+		y += lineHeight;
+
+		// Multiply (q2 * q1) - 非可換性を確認
+		QuaternionScreenPrintf(0, y, mul2, "Multiply(Q2, Q1):");
+		y += lineHeight;
 
 		// カメラ
 		camera->Update();
