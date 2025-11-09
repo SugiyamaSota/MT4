@@ -45,9 +45,6 @@ Matrix4x4 DirectionToDirection(const Vector3& from, const Vector3& to) {
     // 浮動小数点誤差対策として[-1, 1]の範囲にクランプ
     cos_theta = std::fmaxf(-1.0f, std::fminf(1.0f, cos_theta));
 
-    // 角度θの計算（正しい方法：acos）
-    float theta = std::acos(cos_theta);
-
     // 3. 許容誤差の定義
     const float kEpsilon = 1.0e-5f;
 
@@ -108,8 +105,8 @@ Matrix4x4 DirectionToDirection(const Vector3& from, const Vector3& to) {
     Vector3 n = Normalize(Cross(norm_from, norm_to));
 
     // ロドリゲスの公式に必要な値
-    float c = cos_theta; // cos(θ)
-    float s = std::sin(theta); // sin(θ)
+    float c = Dot(norm_from,norm_to); // cos(θ)
+    float s = Length(Cross(norm_from,norm_to)); // sin(θ)
     float temporaryValue = 1.0f - c; // 1 - cos(θ)
 
     // ロドリゲスの回転公式の適用
