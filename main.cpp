@@ -54,6 +54,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		ImGui::End();
 
 		Matrix4x4 rotateMatrix0 = DirectionToDirection(Normalize(Vector3{ 1.f,0.f,0.f }), Normalize(Vector3{ -1.f,0.f,0.f }));
+
 		Matrix4x4 rotateMatrix1 = DirectionToDirection(from0, to0);
 		Matrix4x4 rotateMatrix2 = DirectionToDirection(from1, to1);
 
