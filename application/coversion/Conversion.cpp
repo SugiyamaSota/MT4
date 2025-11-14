@@ -1,5 +1,7 @@
 #include "Conversion.h"
 
+#include<Novice.h>
+
 #include<math.h>
 
 #include"../vector/Vector.h"
@@ -134,3 +136,4 @@ Matrix4x4 DirectionToDirection(const Vector3& from, const Vector3& to) {
 
     return result;
 }
+

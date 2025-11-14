@@ -62,6 +62,9 @@
     <ClCompile Include="application\coversion\Conversion.cpp">
       <Filter>KamataEngine</Filter>
     </ClCompile>
+    <ClCompile Include="application\quaternion\Quaternion.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\KamataEngine\DirectXGame\base\WinApp.h">
@@ -95,5 +98,6 @@
       <Filter>application\struct</Filter>
     </ClInclude>
     <ClInclude Include="application\coversion\Conversion.h" />
+    <ClInclude Include="application\quaternion\Quaternion.h" />
   </ItemGroup>
 </Project>
