@@ -57,11 +57,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		}
 		ImGui::End();
 
-
 		int y = 50;
 		int lineHeight = 40; // 1行の表示に十分な高さ
-
-		
 
 		// --- 結果の出力 ---
 
