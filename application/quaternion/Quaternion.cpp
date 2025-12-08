@@ -178,3 +178,63 @@ Matrix4x4 MakeRotateMatrix(const Quaternion& quaternion) {
     return result;
 }
 
+// Slerp
+Quaternion Slerp(const Quaternion& q0, const Quaternion& q1, float t) {
+    // t は [0, 1] の範囲にクランプ（制限）します。
+    // クランプ処理は、使用している環境に合わせて適切な関数（例：std::fmax(0.0f, std::fmin(1.0f, t))）を使用してください。
+    // ここでは単純化のために t の値をそのまま使用します。
+
+    Quaternion q_start = q0;
+    Quaternion q_end = q1;
+
+    // 2つのクォータニオンの内積を計算
+    // q0とq1の間の角度を求めるために使用します
+    float dot = q0.w * q1.w + q0.x * q1.x + q0.y * q1.y + q0.z * q1.z;
+
+    // もし内積が負の場合、より短い経路で補間するために
+    // q0またはq1の符号を反転させます。（結果は同じ回転を表します）
+    if (dot < 0.0f) {
+        // q1 のすべての成分の符号を反転
+        q_end.w = -q1.w;
+        q_end.x = -q1.x;
+        q_end.y = -q1.y;
+        q_end.z = -q1.z;
+        dot = -dot; // 内積も反転
+    }
+
+    // 角度が非常に小さい場合（ほぼ同じクォータニオンの場合）、
+    // 線形補間（Lerp）にフォールバックして計算誤差を避けます。
+    const float kThreshold = 0.9995f;
+    if (dot > kThreshold) {
+        // 線形補間（Lerp）を行います
+        float scale0 = 1.0f - t;
+        float scale1 = t;
+
+        Quaternion result;
+        result.w = scale0 * q_start.w + scale1 * q_end.w;
+        result.x = scale0 * q_start.x + scale1 * q_end.x;
+        result.y = scale0 * q_start.y + scale1 * q_end.y;
+        result.z = scale0 * q_start.z + scale1 * q_end.z;
+
+        // 結果を正規化して返します（Lerpでは正規化が必要）
+        return Normalize(result);
+    }
+
+    // 2つのクォータニオン間の角度を計算
+    // 内積 (dot) は cos(theta) に等しいです
+    float theta = std::acos(dot); // theta は 0 から pi の範囲
+
+    // 補間係数を計算
+    float sin_theta = std::sin(theta);
+    float scale0 = std::sin((1.0f - t) * theta) / sin_theta;
+    float scale1 = std::sin(t * theta) / sin_theta;
+
+    // Slerpの結果を計算
+    Quaternion result;
+    result.w = scale0 * q_start.w + scale1 * q_end.w;
+    result.x = scale0 * q_start.x + scale1 * q_end.x;
+    result.y = scale0 * q_start.y + scale1 * q_end.y;
+    result.z = scale0 * q_start.z + scale1 * q_end.z;
+
+    return result;
+}
